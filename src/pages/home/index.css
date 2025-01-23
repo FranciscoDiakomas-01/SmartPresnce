@@ -1,0 +1,92 @@
+#home{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding:15px;
+}
+#home header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#home > aside{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+#home > aside span:first-of-type{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  width: 100%;
+}
+#home > aside span:first-of-type div{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  height: 150px;
+  padding: 20px;
+  border-radius: 5px;
+  gap: 20px;
+  box-shadow: 4px 4px 4px #8281813c;
+  background-color: var(--blue2);
+  color: var(--white);
+}
+
+#home >  button{
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  height: 45px;
+  box-shadow: 4px 4px 4px #00000021;
+  background-color: var(--gray2);
+  color: var(--white);
+  border-radius: 4px;
+}
+
+#home >  span{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+
+#home >  span > div{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 50px;
+}
+
+#home >  span > div div{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px;
+  min-height: 70px;
+  background-color: var(--white);
+  box-shadow: 4px 4px 3px #1d1c1c18;
+  border-radius: 4px;
+}
+
+#home >  span > div div span{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#home >  span > div div > div span:first-of-type{
+  display: flex;
+  width: 80px;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+
+}

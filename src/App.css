@@ -1,0 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+#App{
+  background-color: var(--gray);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100dvw;
+  min-height: 1000dvh;
+}
+
+#App > section{
+  position: fixed;
+  right: 0;
+  width: 81%;
+  background-color: var(--gray);
+  min-height: 100dvh;
+  top: 0;
+}
+
+button{
+  cursor: pointer;
+  transition: all .3s linear;
+}
+
+button:active{
+  scale: 0.8;
+}
