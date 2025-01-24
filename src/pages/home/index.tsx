@@ -4,17 +4,17 @@ export default function Home(){
 
   const cards = [
     {
-      value : 10,
+      value : 15,
       name : "Professores On",
       icon : <FaUser/>
     },
     {
-      value : 10,
+      value : 5,
       name : "Professores Off",
       icon : <FaUser/>
     },
     {
-      value : 10,
+      value : 20,
       name : "Total Professores",
       icon : <FaUser/>
     }
@@ -93,17 +93,20 @@ export default function Home(){
                 {
                   card.icon
                 }
+                
               </div>
             ))
           }
         </span>
       </aside>
       <span>
-        <strong>Registros  Recentes</strong>
+        {
+          last.length > 0 && 
+          <strong>Registros  Recentes</strong>
+        }
         <div>
           {
-            last.map((user , index) => (
-
+            last.length > 0 ? last.map((user , index) => (
               <div key={index} > 
                 <span>
                   <strong>
@@ -120,6 +123,12 @@ export default function Home(){
                 </p>
               </div>
             ))
+
+            : (
+              <h1>
+                Sem Registros Cadastrados
+              </h1>
+            )
           }
         </div>
       </span>

@@ -1,4 +1,4 @@
-#sideBar{
+#sideBar {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,18 +12,18 @@
   width: 17%;
 }
 
-#sideBar img{
-  height: 140px;
-  border-radius: 50%;
-  width: 140px;
-}
-#sideBar > div{
+#sideBar > div {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
-#sideBar ul{
+#sideBar > div svg {
+  transform: rotate(180deg);
+  font-size: 60pt;
+  color: var(--blue2);
+}
+#sideBar ul {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -39,34 +39,34 @@
   width: 100%;
   height: 70px;
   padding-left: 10px;
-  color: var(--blue);
+  color: var(--blue2);
   border-radius: 4px;
-  transition: all .1s linear;
+  transition: all 0.1s linear;
 }
-#sideBar  > span{
+#sideBar > span {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-#sideBar  > span  div{
+#sideBar > span div {
   width: 60px;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--blue);
+  background-color: var(--blue2);
   color: var(--white);
   border-radius: 50%;
 }
-#sideBar  > span aside{
+#sideBar > span aside {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-#sideBar button{
-  border:  none;
+#sideBar button {
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,6 +74,6 @@
   height: 55px;
   font-size: 13pt;
   border-radius: 5px;
-  background-color: #ff004c;
+  background-color: var(--black);
   color: var(--white);
 }

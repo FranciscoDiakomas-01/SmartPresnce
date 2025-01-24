@@ -1,0 +1,52 @@
+#teachersingup {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#teachersingup > form {
+  min-height: 50%;
+  min-width: 70%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  border-radius: 10px;
+}
+
+#teachersingup > form aside {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 0 10px;
+}
+#teachersingup > form aside div {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+#teachersingup > form h1 {
+  text-align: center;
+  font-size: 20pt;
+  color: var(--blue2);
+}
+
+#teachersingup > form > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+#teachersingup > form > div button {
+  width: 90%;
+  height: 40px;
+  color: white;
+  background-color: var(--blue2);
+  border-radius: 5px;
+}
+#teachersingup > form > div button:last-of-type {
+  background-color: var(--black);
+}

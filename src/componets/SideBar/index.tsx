@@ -1,10 +1,10 @@
 import type React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsUiChecksGrid } from "react-icons/bs";
-import { LuLogOut  , LuUsersRound , LuCalendar1 , LuUser} from "react-icons/lu";
-import logo from '../../assets/IMG-20250121-WA0021(1).jpg'
+import { LuLogOut  , LuUsersRound , LuCalendar1 , LuUser, LuCamera} from "react-icons/lu";
 import './index.css'
 import { useState } from "react";
+import { FaExclamation } from "react-icons/fa";
 
 export default function SideBar(){
 
@@ -20,32 +20,39 @@ export default function SideBar(){
     lastname : string,
     type : string
   }
-
-  const routes : IRoutes[] = [
+  const nav = useNavigate()
+  const routes: IRoutes[] = [
     {
-      icon : <BsUiChecksGrid/>,
-      id : 1,
-      name : 'Inicial',
-      url : '/'
-    }, {
-      icon : <LuUsersRound/>,
-      id : 2,
-      name : 'Professores',
-      url : '/teacher'
+      icon: <BsUiChecksGrid />,
+      id: 1,
+      name: "Inicial",
+      url: "/",
     },
     {
-      icon : <LuCalendar1/>,
-      id : 3,
-      name : 'Horário',
-      url : '/'
+      icon: <LuUsersRound />,
+      id: 2,
+      name: "Professores",
+      url: "/teacher",
     },
     {
-      icon :<LuUser />,
-      id : 5,
-      name : 'Meu Perfil',
-      url : '/'
-    }
-  ]
+      icon: <LuCalendar1 />,
+      id: 3,
+      name: "Horário",
+      url: "/agenda",
+    },
+    {
+      icon: <LuCamera />,
+      id: 53,
+      name: "Leitor de Qr Code",
+      url: "/read",
+    },
+    {
+      icon: <LuUser />,
+      id: 5,
+      name: "Meu Perfil",
+      url: "/profile",
+    },
+  ];
   const user : IUser = {
     id : 1,
     lastname : 'Diakomas',
@@ -57,10 +64,10 @@ export default function SideBar(){
 
     <nav id="sideBar">
       <div>
+        <FaExclamation/>
         <h1>
           SmartPresence-28AGD
         </h1>
-        <img src={logo} alt="LogoTipo" />
       </div>
 
       <ul>
@@ -70,7 +77,7 @@ export default function SideBar(){
               setActive(route.id)
             }}
             style={{
-              backgroundColor : route.id == active ? "var(--blue)" : "",
+              backgroundColor : route.id == active ? "var(--blue2)" : "",
               color : route.id == active ? "var(--white)" : ""
             }}
             >
@@ -101,7 +108,9 @@ export default function SideBar(){
           </i>
         </aside>
       </span>
-      <button>
+      <button onClick={()=>{
+        nav("/login")
+      }}>
       <LuLogOut />
       <p>
         Sair

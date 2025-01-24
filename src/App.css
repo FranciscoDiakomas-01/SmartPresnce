@@ -26,8 +26,19 @@
 button{
   cursor: pointer;
   transition: all .3s linear;
+  border: none;
+  font-size: 11pt;
 }
 
 button:active{
   scale: 0.8;
+}
+
+input , select{
+  border: solid 1px var(--blue2);
+  min-height: 45px;
+  padding-left: 10px;
+  font-size: 12pt;
+  background-color: transparent;
+  outline: none;
 }

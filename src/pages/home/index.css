@@ -1,8 +1,8 @@
 #home{
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding:15px;
+  gap: 40px;
+  padding:20px;
 }
 #home header{
   width: 100%;
@@ -35,8 +35,29 @@
   box-shadow: 4px 4px 4px #8281813c;
   background-color: var(--blue2);
   color: var(--white);
+  position: relative;
 }
-
+#home > aside span:first-of-type div svg{
+  position: absolute;
+  right: 10px;
+  font-size: 90pt;
+  opacity: 0.4;
+}
+#home > aside span:first-of-type div button{
+  width: 200px;
+  height: 37px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--white);
+  color: var(--blue2);
+  font-size: 11pt;
+}
+#home > aside span:first-of-type div h2{
+  font-size: 22pt;
+}
+#home > aside span:first-of-type div h3{
+  font-size: 30pt;
+}
 #home >  button{
   width: 300px;
   display: flex;

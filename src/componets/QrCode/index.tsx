@@ -1,59 +1,59 @@
-import { useState } from 'react';
-import QrScanner from 'react-qr-scanner';
+import { useState } from "react";
+import { Html5QrcodeScanner } from "html5-qrcode";
+import './index.css';
 
 const QRCodeReader = () => {
-  const [isCameraActive, setIsCameraActive] = useState(false); // Controla se a câmera está ativa
-  const [qrCodeData, setQrCodeData] = useState(null); // Dados do QR code lido
+  const [qrCodeData, setQrCodeData] = useState(null); // Dados do QR Code
+  const [scanner, setScanner] = useState(null); // Armazena a instância do scanner
+  const [isScanning, setIsScanning] = useState(false); // Controla se o scanner está ativo
 
-  // Função que é chamada quando um QR code é escaneado
-  const handleScan = (data) => {
-    if (data) {
-      setQrCodeData(data); // Armazena os dados do QR code
-    }
-  };
-
-  // Função chamada em caso de erro de leitura
-  const handleError = (err) => {
-    console.error(err);
-  };
-
-  // Função para iniciar a leitura do QR code
+  // Função para iniciar o scanning
   const startScanning = () => {
-    setIsCameraActive(true); // Ativa a câmera
-    setQrCodeData(null); // Reseta o dado do QR code lido
+      const newScanner = new Html5QrcodeScanner(
+        "reader",
+        { fps: 10, qrbox: 550 },
+        false
+      );
+
+      newScanner.render(
+        (decodedText) => {
+          console.log("QR Code detectado:", decodedText);
+          setQrCodeData(decodedText);
+        },
+        (error) => {
+          console.error("Erro ao escanear QR Code:", error);
+        }
+      );
+
+    setScanner(newScanner);
+    setIsScanning(true); 
   };
 
-  // Função para parar a leitura do QR code
+  // Função para parar o scanning
   const stopScanning = () => {
-    setIsCameraActive(false); // Desativa a câmera
-    setQrCodeData(null); // Reseta o dado do QR code lido
+    if (scanner) {
+      scanner.clear(); // Limpa o scanner
+    }
+
+    setIsScanning(false); // Desativa o estado de scanning
+    setQrCodeData(null); // Reseta os dados do QR Code
   };
 
   return (
-    <div>
+    <div id="qr">
       <h1>Leitor de QR Code</h1>
+      <aside>
 
-      {isCameraActive ? (
-        <>
-          {/* O componente de escaneamento da câmera */}
-          <QrScanner
-            delay={300}
-            onError={handleError}
-            onScan={handleScan}
-            style={{ width: '100%' }}
-          />
-          <button onClick={stopScanning}>Cancelar</button>
-        </>
-      ) : (
-        <>
-          <button onClick={startScanning}>Start</button>
-        </>
-      )}
+      <div id="reader" style={{ width: "100%", height : '100%' }}></div>
+      </aside>
+      <div>
+          <button onClick={startScanning}>Iniciar Leitura</button>
+          <button id="stopRead" onClick={stopScanning}>Parar Leitura</button>
+      </div>
 
       {qrCodeData && (
-        <div>
-          <h2>Dados do QR Code:</h2>
-          <p>{qrCodeData}</p>
+        <div id="result">
+          <h2>Boa Tarde , Seja Bem Vindo Ao SmartPresence senhor/a  {qrCodeData} </h2>
         </div>
       )}
     </div>

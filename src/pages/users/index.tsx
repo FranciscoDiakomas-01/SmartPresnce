@@ -1,7 +1,6 @@
-import { FaCamera, FaPlus, FaSearch, FaUser } from 'react-icons/fa'
+import { FaCamera, FaFilePdf, FaPlus, FaSearch, FaUser } from 'react-icons/fa'
 import './index.css'
-import { useState } from 'react'
-import QRCodeReader from '../../componets/QrCode'
+import { useNavigate } from 'react-router-dom'
 
 export default function Users(){
   const users = [
@@ -103,25 +102,21 @@ export default function Users(){
 
     }
   ]
-  const  [ qr , setQr] = useState(false)
-  
+  const nav = useNavigate()
   return(
     <section id='teachers'>
-      {
-        qr && <QRCodeReader/>
-      }
+      
       <header>
         <form>
           <input placeholder='Pesquise pelo nome ou pelo id do professor' type='text' required/>
           <button>
-
           <FaSearch/>
           </button>
         </form>
         <div>
           
         <button onClick={()=>{
-          setQr(prev => !prev)
+          nav("/read")
         }}>
           <FaCamera/>
           <p>
@@ -129,6 +124,14 @@ export default function Users(){
           </p>
         </button>
         <button>
+          <FaFilePdf/> 
+          <p>
+            Exporrtar em PDF
+          </p>
+        </button>
+        <button onClick={()=>{
+          nav("/createTeaher")
+        }}>
           <FaPlus/> 
           <p>
             Add
@@ -153,7 +156,10 @@ export default function Users(){
               <p>
                 Estatus : { user.status}
               </p>
-              <button>
+              <button onClick={()=>{
+                localStorage.setItem("userid" , index.toString())
+                nav("/details")
+              }}>
                 Ver Detalhes
               </button>
             </div>

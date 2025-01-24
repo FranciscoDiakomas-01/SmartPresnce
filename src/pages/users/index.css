@@ -95,7 +95,7 @@
   width: 60%;
   border: none;
   height: 40px;
-  background-color: var(--gray2);
+  background-color: var(--black);
   color: var(--white);
   border-radius: 4px;
   
@@ -116,7 +116,7 @@
 #teachers >  footer button{
   height: 45px;
   width: 70px;
-  background-color: var(--blue2);
+  background-color: var(--black);
   color: var(--white);
   border: none;
   border-radius: 4px;
