@@ -1,0 +1,78 @@
+
+#login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100dvw;
+  min-height: 100dvh;
+
+}
+#login * {
+  overflow: hidden;
+}
+
+#login aside{
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  height: auto;
+  justify-content: center;
+  width: 550px;
+  padding: 10px;
+  padding-left: 50px;
+}
+#login article{
+  height: 525px;
+  width: 550px;
+}
+#login img{
+  height: 100%;
+  width: 100%;
+}
+#login aside button{
+  height: 50px;
+  color: var(--white);
+  background-color: var(--blue2);
+  border: 5px;
+}
+#login  h1{
+  text-align: center;
+  font-size: 32pt;
+  color: var(--blue2);
+
+}
+
+@media screen and (max-width : 1020px) {
+  #login {
+    flex-direction: column;
+    justify-content: start;
+  }
+  #login article{
+  width: 100%;
+}
+    #login img{
+    height: 50%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+
+#login aside{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: auto;
+  justify-content: center;
+  width: 90%;
+  padding: 0px;
+  padding-left: 0px;
+  margin-top: -200px;
+  margin-bottom: 100px;
+}
+#login  h1{
+  text-align: center;
+  font-size: 20pt;
+  color: var(--blue2);
+  text-wrap: nowrap;
+}
+}

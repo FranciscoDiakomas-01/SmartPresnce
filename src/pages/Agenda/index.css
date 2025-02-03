@@ -1,0 +1,221 @@
+#agenda {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+  position: relative;
+}
+#agenda header {
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 30px;
+}
+#agenda #add{
+  display: flex;
+  place-self: center;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 200px;
+  background-color: var(--black);
+  color: var(--white);
+  border-radius: 4px;
+}
+
+#agenda > header button {
+  width: 100px;
+  color: var(--white);
+  background-color: var(--black);
+  height: 45px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+#agenda > form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  justify-content: center;
+}
+
+#agenda > form input {
+  width: 600px;
+}
+#agenda > form button {
+  background-color: var(--black);
+  color: var(--white);
+  height: 47px;
+  width: 60px;
+}
+
+#agenda table {
+  width: 98%;
+}
+#agenda table tr {
+  height: 50px;
+  text-align: center;
+}
+#agenda > table td:last-of-type{
+  width: 110px;
+}
+#agenda table thead tr {
+  background-color: var(--black);
+  color: var(--white);
+}
+#agenda table tbody tr:nth-last-of-type(even) {
+  background-color: var(--white);
+}
+#agenda table button {
+  background-color: var(--blue2);
+  height: 40px;
+  width: 110px;
+  border-radius: 5px;
+  display: flex;
+  place-self: center;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+#agenda table tbody tr:hover{
+  background-color: var(--blue);
+}
+#agenda > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 97%;
+}
+#agenda > span button {
+  background-color: var(--black);
+  color: var(--white);
+  width: 70px;
+  height: 40px;
+  margin: 0 10px;
+  border-radius: 5px;
+}
+
+#agenda > article {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+}
+
+#agenda > article #loader{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  align-items: center;
+}
+#agenda > article #loader > *{
+  width: 30px;
+  height: 30px;
+}
+#agenda > article form  , #agenda > article aside{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: 60%;
+  min-height: 50%;
+  padding: 10px;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px #0000001d;
+  gap: 30px;
+}
+
+#agenda > article form * {
+  overflow-x: hidden;
+}
+#agenda  > article aside table tbody tr:nth-last-of-type(even) {
+  background-color: var(--gray);
+}
+ #agenda > article aside{
+  justify-content: start;
+  padding: 0;
+ }
+#agenda > article div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+#agenda > article form button {
+  width: 100%;
+  height: 45px;
+  color: var(--white);
+  background-color: var(--blue2);
+  border-radius: 4px;
+}
+#agenda > article h2 {
+  text-align: center;
+  font-size: 30pt;
+  font-weight: bold;
+  font-family: fantasy;
+  color: var(--black);
+}
+#agenda > article form button:last-of-type {
+  background-color: var(--black);
+}
+#agenda > article aside div{
+  height: 160px;
+  overflow-y: scroll;
+}
+#agenda > article header{
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--blue2);
+  width: 100%;
+  height: 60px;
+  color: var(--white);
+
+}
+
+#agenda > article header h1{
+  font-size: 14pt;
+  padding-left: 10px;
+}
+#agenda > article header button{
+  margin-right: 10px;
+  background-color: transparent;
+  color: var(--white);
+  font-size: 20pt;
+  font-weight: bold;
+}
+#agenda > article aside > * {
+  text-align: center;
+}
+
+@media screen and (max-width : 1024px) {
+  #agenda > article form  , #agenda > article aside{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: 80%;
+  min-height: 50%;
+  padding: 0px;
+  justify-content: start;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px #0000001d;
+  gap: 30px;
+  margin-top: -200px;
+}
+
+#agenda > article form {
+  padding: 20px;
+}
+}

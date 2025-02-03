@@ -1,0 +1,159 @@
+#teacher{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+#teacher section{
+  width: 100dvw;
+  min-height: 100dvh;
+}
+
+#teacher section{
+  background-image: linear-gradient(#0000008e , #00000069), url(../../assets/Smart-presence_01.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-attachment: fixed;
+}
+#teacher>button{
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: var(--black);
+  color: var(--white);
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  font-size: 18pt;
+  z-index: 9999;
+}
+#teacher > header{
+  width: 98%;
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  background-color: var(--black);
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  align-items: center;
+
+}
+#teacher header nav{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+#teacher nav button{
+  width: 100px;
+  background-color:#ffff;
+  border-radius: 4px;
+  height: 40px;
+  color: var(--black);
+  margin-right: 20px;
+}
+#teacher header svg{
+  display: none;
+}
+#teacher a{
+  text-decoration: none;
+  color: var(--white);
+}
+
+#teacher footer{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#teacher footer button{
+  height: 45px;
+  width: 70px;
+  background-color: var(--black);
+  color: var(--white);
+  margin: 0 5px;
+  font-size: 15pt;
+  border-radius: 5px;
+}
+
+#menu{
+  display: none;
+}
+
+
+
+@media screen and (max-width : 767px) {
+
+  #menu{
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 50%;
+  z-index: 99;
+  background-color: var(--black);
+  transition: all .4s linear;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+#menu a{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  gap: 20px;
+  height: 50px;
+  backdrop-filter: blur(10px);
+  border-radius: 7px;
+}
+  #menu > a:first-of-type {
+    margin-top: 50px;
+  }
+    #teacher header nav{
+    display: none;
+  }
+
+  #teacher nav button{
+    height: 35px;
+    width: 80%;
+  margin-right: 0px;
+  }
+  
+    #teacher header svg{
+    display: flex;
+    margin-right: 10px;
+    font-size: 18pt;
+    transition: .2s linear all;
+    cursor: pointer;
+  }
+   #teacher header svg:active{
+    scale: 0.8;
+   }
+  #teacher > header{
+  width: 100%;
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  background-color: var(--black);
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  align-items: center;
+
+}
+#teacher > header h1{
+  font-size: 20pt;
+  margin-left: 5px;
+}
+}

@@ -1,0 +1,55 @@
+#qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80dvh;
+  gap: 40px;
+  padding: 20px;
+  justify-content: center;
+}
+
+#qr button {
+  width: 250px;
+  margin-left: 10px;
+  height: 40px;
+  border: none;
+  color: var(--white);
+  background-color: var(--blue2);
+  font-size: 12pt;
+  border-radius: 5px;
+}
+
+#qr #stopRead {
+  background-color: var(--black);
+}
+
+#qr aside {
+  height: 400px;
+  width: 800px;
+  border: solid 1px var(--blue2);
+  padding: 20px;
+}
+
+#qr #result {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: #ccf0cc;
+  padding: 10px;
+  color: green;
+  text-align: center;
+}
+
+
+@media screen and (max-width : 1024px) {
+  #qr aside {
+  height: 400px;
+  width: 700px;
+  border: solid 1px var(--blue2);
+  padding: 20px;
+  overflow: hidden;
+}
+ #qr aside  * {
+  overflow: hidden;
+ }
+}

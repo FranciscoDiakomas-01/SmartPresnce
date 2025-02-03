@@ -1,0 +1,219 @@
+#userdetails {
+  width: 97%;
+  height: 100dvh;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  position: relative;
+}
+
+#userdetails #feria {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+}
+
+#userdetails #feria form {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: 50%;
+  height: 40%;
+  padding: 10px;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px #0000001d;
+  gap: 30px;
+}
+#userdetails #feria div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+#userdetails #feria button {
+  width: 100%;
+  height: 45px;
+  color: var(--white);
+  background-color: var(--blue2);
+  border-radius: 4px;
+}
+#userdetails #feria h2 {
+  text-align: center;
+  font-size: 30pt;
+  font-weight: bold;
+  font-family: fantasy;
+  color: var(--black);
+}
+#userdetails #feria button:last-of-type {
+  background-color: var(--black);
+}
+#userdetails > aside {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 40px;
+  align-items: center;
+  font-size: 14pt;
+}
+
+#userdetails > aside > span {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: var(--blue2);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#userdetails > aside > span svg {
+  font-size: 62pt;
+}
+#userdetails > aside > div {
+  display: flex;
+  gap: 10px;
+}
+
+#userdetails > aside button {
+  height: 40px;
+  width: 200px;
+  background-color: var(--black);
+  color: var(--white);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#userdetails > aside button:nth-of-type(2) {
+  background-color: var(--black);
+}
+#userdetails > article {
+  width: 50%;
+  overflow-y: hidden;
+  position: relative;
+}
+#userdetails > article header {
+  width: 95%;
+  background-color: var(--black);
+  padding: 20px;
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#userdetails > article > div > div {
+  overflow-y: scroll;
+  height: 900px;
+}
+#userdetails > article table {
+  width: 100%;
+  padding: 10px;
+}
+#userdetails > article table thead tr {
+  height: 40px;
+  background-color: var(--black);
+  color: var(--white);
+  text-align: center;
+}
+#userdetails > article table tr {
+  height: 50px;
+}
+#userdetails > article table td:last-of-type {
+  width: 130px;
+}
+article table p {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  width: 130px;
+  color: var(--white);
+}
+#userdetails > article table tbody tr:nth-child(even) {
+  background-color: var(--gray);
+}
+#userdetails article input {
+  border: solid 1px var(--white);
+  color: var(--white);
+  width: 400px;
+  padding: 0 20px;
+}
+#userdetails > article table tbody tr:hover{
+  background-color: var(--blue);
+}
+#userdetails > article > div > div > span{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#userdetails > article > div > div > span button{
+  width: 60px;
+  height: 40px;
+  background-color: var(--black);
+  color: var(--white);
+  margin: 0 5px;
+  border-radius: 5px;
+}
+#userdetails article form {
+  display: flex;
+}
+#userdetails article form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  color: var(--black);
+  width: 40px;
+}
+
+
+@media screen and (max-width : 1024px) {
+  #userdetails {
+  width: 99%;
+  height: auto;
+  flex-direction: column;
+  padding: 10px;
+  padding-top: 0px;
+  gap: 40px;
+  position: relative;
+}
+#userdetails > aside {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  align-items: center;
+  font-size: 14pt;
+}
+#userdetails > article {
+  width: 100%;
+  position: relative;
+}
+#userdetails #feria form {
+  width: 70%;
+  height: 40%;
+  margin-top: -300px;
+}
+}
+
+
+ #userdetails #ll{
+  display: flex;
+  place-self: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

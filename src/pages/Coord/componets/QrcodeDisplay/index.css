@@ -1,0 +1,65 @@
+#qrcodePro{
+  position: absolute;
+  background-color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 0 20px;
+}
+
+
+#qrcodePro #qr {
+  min-height: 100%;
+  gap: 40px;
+  padding: 0px;
+  justify-content: start;
+  padding-top: 100px;
+  margin-left: -20px;
+}
+#qrcodePro h1{
+  color: var(--white);
+}
+
+@media screen and (max-width : 767px) {
+  #qrcodePro #qr #result{
+    margin-bottom: 100px;
+  }
+  #qrcodePro div:nth-of-type(2){
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  #qrcodePro button{
+    width: 150px;
+    border: none;
+    height: 45px;
+  }
+  #qrcodePro #qr button:last-of-type{
+    background-color: var(--white);
+    color: var(--black);
+  }
+  #qrcodePro #qr aside {
+  height: 200px;
+  width: 350px;
+  border: solid 1px var(--blue2);
+  padding: 0px;
+}
+}
+
+
+@media screen and (max-width : 1020px) {
+
+  #qrcodePro #qr button:last-of-type{
+    background-color: var(--white);
+    color: var(--black);
+  }
+  #qrcodePro #qr aside {
+  height: 500px;
+  width: 600px;
+  border: solid 1px var(--blue2);
+  padding: 0px;
+}
+}

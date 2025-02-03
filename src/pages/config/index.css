@@ -1,0 +1,92 @@
+#config{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100dvh;
+  padding: 20px;
+  background-image: linear-gradient(#0000004d , #0000004d) , url(../../assets/Smart-presence_01.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#config form{
+  width: 70%;
+  background-color: transparent;
+  backdrop-filter: blur(20px);
+  min-height: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color: var(--white);
+}
+#config *::placeholder{
+  color: #f3eeee;
+}
+#config  h2{
+  text-align: center;
+  font-size: 30pt;
+}
+
+#config  label{
+  font-size: 15pt;
+}
+
+#config form input{
+  border: solid 1px var(--white);
+  height: 50px;
+}
+#config form aside{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+#config form aside span{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+#config form div{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+#config form button{
+  width: 50%;
+  height: 50px;
+  font-size: 12pt;
+  border-radius: 5px;
+  background-color: var(--black);
+  color: var(--white);
+}
+#config form button:first-of-type{
+  background-color: var(--blue2);
+}
+
+@media screen and (max-width : 1024px) {
+  #config form aside{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+#config *::placeholder{
+  color: var(--black);
+}
+#config{
+  width: 100dvw;
+  background-image: none;
+  padding: 0px;
+}#config form{
+  color: var(--black);
+}
+
+#config form input{
+  border: solid 1px var(--blue2);
+  height: 50px;
+}
+}

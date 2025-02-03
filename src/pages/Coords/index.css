@@ -1,0 +1,228 @@
+#cors{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+@media screen and (max-width : 1024px) {
+  #cors{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0px;
+}
+}
+#cors header{
+  width: 97%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+
+#cors header {
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 30px;
+}
+
+#cors > header button {
+  width: 100px;
+  color: var(--white);
+  background-color: var(--black);
+  height: 45px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+#cors > form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  justify-content: center;
+  
+}
+
+#cors > form input {
+  width: 600px;
+}
+#cors > form button {
+  background-color: var(--black);
+  color: var(--white);
+  height: 47px;
+  width: 60px;
+}
+
+#cors table {
+  width: 98%;
+}
+#cors table tr {
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#cors > table td:last-of-type{
+  width: 100px;
+}
+
+#cors table thead tr {
+  background-color: var(--black);
+  color: var(--white);
+}
+#cors table tbody tr:nth-last-of-type(even) {
+  background-color: var(--white);
+}
+#cors table button {
+  background-color: var(--black);
+  height: 40px;
+  width: 100px;
+  border-radius: 5px;
+  display: flex;
+  place-self: center;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+#cors table td:nth-of-type(4) button{
+  background-color: var(--blue2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 12pt;
+}
+
+#cors table tbody tr:hover{
+  background-color: var(--blue);
+}
+#cors > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 97%;
+}
+#cors > span button {
+  background-color: var(--black);
+  color: var(--white);
+  width: 70px;
+  height: 40px;
+  margin: 0 10px;
+  border-radius: 5px;
+}
+
+#cors > article {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+}
+
+#cors > article form {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: 80%;
+  min-height: 50%;
+  padding: 10px;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px #0000001d;
+  gap: 30px;
+}
+
+#cors > article form  #loader {
+  overflow: hidden;
+  display: flex;
+  place-self: center;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  
+}
+#cors > article form  #loader div{
+  height: 30px;
+  width: 30px;
+}
+
+#cors > article form article{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+#cors > article form article span{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#cors  > article aside table tbody tr:nth-last-of-type(even) {
+  background-color: var(--gray);
+}
+ #cors > article aside{
+  justify-content: start;
+  padding: 0;
+ }
+#cors > article div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+#cors > article form button {
+  width: 100%;
+  height: 45px;
+  color: var(--white);
+  background-color: var(--blue2);
+  border-radius: 4px;
+}
+#cors > article h2 {
+  text-align: center;
+  font-size: 30pt;
+  font-weight: bold;
+  font-family: fantasy;
+  color: var(--blue2);
+}
+#cors > article form button:last-of-type {
+  background-color: var(--black);
+}
+#cors > article aside div{
+  height: 160px;
+  overflow-y: scroll;
+}
+#cors > article header{
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--blue2);
+  width: 100%;
+  height: 60px;
+  color: var(--white);
+
+}
+
+#cors > article header h1{
+  font-size: 14pt;
+  padding-left: 10px;
+}
+#cors > article header button{
+  margin-right: 10px;
+  background-color: transparent;
+  color: var(--white);
+  font-size: 20pt;
+  font-weight: bold;
+}
+#cors > article aside > * {
+  text-align: center;
+}

@@ -1,0 +1,139 @@
+#presenceTeacher  > article{
+  width: 90%;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: 70%;
+  padding: 10px;
+  border-radius: 10px;
+}
+#presenceTeacher  form{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+#presenceTeacher  form input{
+  width: 500px;
+}
+#presenceTeacher  form button{
+  background-color: var(--blue2);
+  color: var(--white);
+  height: 47px;
+  width: 60px;
+  font-size: 13pt;
+  margin-left: -10px;
+}
+#presenceTeacher  > article aside{
+  width: 97%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  padding-top: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+#presenceTeacher  > article aside span{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue2);
+  border-radius: 6px;
+  font-size: 20pt;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--white);
+}
+
+#presenceTeacher article table {
+  width: 100%;
+}
+#presenceTeacher article table tr {
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+#presenceTeacher article > table td:last-of-type{
+  width: 220px;
+}
+
+
+#presenceTeacher article table thead tr {
+  background-color: var(--black);
+  color: var(--white);
+}
+#presenceTeacher article table tbody tr:nth-last-of-type(even) {
+  background-color: var(--gray);
+}
+#presenceTeacher article table button {
+  background-color: var(--black);
+  height: 40px;
+  width: 130px;
+  border-radius: 5px;
+  display: flex;
+  place-self: center;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+#presenceTeacher article table td:nth-of-type(4) button{
+  background-color: var(--blue2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 12pt;
+}
+#presenceTeacher  article > div{
+  display: none;
+}
+
+#presenceTeacher article table tbody tr:hover{
+  background-color: var(--blue);
+}
+@media screen and (max-width : 767px) {
+   #presenceTeacher  > article {
+    margin-top: 100px;
+    margin-bottom: 100px;
+   }
+  #presenceTeacher  > article aside{
+  width: 97%;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+#presenceTeacher  form input{
+  width: 200px;
+}
+#presenceTeacher  form button{
+  width: 50px;
+  font-size: 12pt;
+}
+#presenceTeacher  table{
+  display: none;
+}
+
+#presenceTeacher  article > div{
+  width: 97%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+#presenceTeacher  article > div div{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 10px;
+  border-radius: 5px;
+}
+#presenceTeacher  article > div div span{
+  display: flex;
+  gap: 10px;
+}
+}

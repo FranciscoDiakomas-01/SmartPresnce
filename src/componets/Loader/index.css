@@ -1,0 +1,24 @@
+#loader{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+#loader > div {
+  display: flex;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: solid 5px var(--blue2);
+  border-top: solid 5px  transparent;
+  animation: rotate 1s linear  infinite;
+}
+@keyframes rotate {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

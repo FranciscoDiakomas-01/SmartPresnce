@@ -1,0 +1,87 @@
+#agendasTeacher article{
+  width: 95%;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#agendasTeacher article table {
+  width: 100%;
+}
+#agendasTeacher article table tr {
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#agendasTeacher article > table td:last-of-type,
+#agendasTeacher article  table td:first-of-type {
+  width: 220px;
+}
+
+#agendasTeacher article table thead tr {
+  background-color: var(--black);
+  color: var(--white);
+}
+#agendasTeacher article table tbody tr:nth-last-of-type(even) {
+  background-color: var(--gray);
+}
+#agendasTeacher article table button {
+  background-color: var(--black);
+  height: 40px;
+  width: 130px;
+  border-radius: 5px;
+  display: flex;
+  place-self: center;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+#agendasTeacher article table td:nth-of-type(4) button{
+  background-color: var(--blue2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 12pt;
+}
+
+#agendasTeacher article table tbody tr:hover{
+  background-color: var(--blue);
+}
+
+
+
+#agendasTeacher aside{
+    display: none;
+  }
+
+@media screen and (max-width : 767px) {
+
+  #agendasTeacher article{
+    display: none;
+  }
+  #agendasTeacher aside{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 90px 0;
+    width: 94%;
+  }
+  #agendasTeacher aside div{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    background-color: var(--white);
+    padding:10px;
+    gap: 20px;
+    border-radius: 5px;
+  }
+    #agendasTeacher aside div span{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+}

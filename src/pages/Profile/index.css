@@ -1,0 +1,73 @@
+#profile {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+#profile form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 70%;
+}
+#profile form  p{
+  text-align: center;
+  font-size: 13pt;
+  color: red;
+}
+#profile form aside {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+#profile > form span {
+  height: 150px;
+  width: 150px;
+  display: flex;
+  place-self: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--blue2);
+  font-size: 50pt;
+  color: var(--white);
+  font-weight: bold;
+}
+#profile form aside div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#profile form > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+#profile form > div button {
+  width: 50%;
+  height: 50px;
+  background-color: var(--blue2);
+  color: var(--white);
+  border-radius: 5px;
+  font-size: 12pt;
+}
+#profile form > div button:last-of-type {
+  background-color: var(--black);
+}
+
+
+@media screen and (max-width : 1024px) {
+  #profile form aside {
+  display: grid;
+  grid-template-columns: 1fr ;
+  gap: 40px;
+}
+}

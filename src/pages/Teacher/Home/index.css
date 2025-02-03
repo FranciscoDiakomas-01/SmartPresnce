@@ -1,0 +1,56 @@
+#homeTeacher{
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(#0000008e , #00000069), url(../../../assets/Smart-presence_01.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#homeTeacher span{
+  background-color: #ffffff16;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60%;
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
+  gap: 40px;
+  padding:40px;
+}
+
+#homeTeacher span h1{
+  font-size: 40pt;
+  text-align: center;
+  color: var(--white);
+}
+#homeTeacher span button{
+  height: 50px;
+  width: 200px;
+  border: none;
+  background-color: var(--black);
+  color: var(--white);
+  border-radius: 4px;
+
+}
+
+@media screen and (max-width : 767px) {
+
+    #homeTeacher span h1{
+    font-size: 25pt;
+    
+  }
+  
+  #homeTeacher span button{
+    height: 40px;
+    width: 150px;
+  }
+  #homeTeacher span{
+    width: 80%;
+  }
+}
