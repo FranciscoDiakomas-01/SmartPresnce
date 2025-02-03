@@ -12,16 +12,15 @@
 
 #homeTeacher span{
   background-color: #ffffff16;
-  width: 80%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 60%;
   backdrop-filter: blur(20px);
   border-radius: 10px;
-  gap: 40px;
-  padding:40px;
+  gap: 80px;
+  padding:70px;
 }
 
 #homeTeacher span h1{

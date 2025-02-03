@@ -2,7 +2,6 @@ import {
   FaArrowCircleLeft,
   FaArrowCircleRight,
   FaCamera,
-  FaFilePdf,
   FaPlus,
   FaSearch,
   FaUser,

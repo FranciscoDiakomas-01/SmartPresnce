@@ -7,6 +7,7 @@
   height: 70%;
   padding: 10px;
   border-radius: 10px;
+  min-height: 200px;
 }
 #presenceTeacher  form{
   width: 100%;
@@ -18,6 +19,7 @@
 #presenceTeacher  form input{
   width: 500px;
 }
+
 #presenceTeacher  form button{
   background-color: var(--blue2);
   color: var(--white);
@@ -29,7 +31,7 @@
 #presenceTeacher  > article aside{
   width: 97%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 40px;
   padding-top: 10px;
   align-items: center;
@@ -136,4 +138,9 @@
   display: flex;
   gap: 10px;
 }
+}
+
+#presenceTeacher  > article #loader {
+  overflow: hidden;
+  height: 200px;
 }

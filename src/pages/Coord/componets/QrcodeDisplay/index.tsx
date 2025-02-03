@@ -19,7 +19,6 @@ export default function TecherQrCode(){
     
           newScanner.render(
             (decodedText) => {
-              console.log("QR Code detectado:", decodedText);
               setQrCodeData(decodedText);
             },
             (error) => {

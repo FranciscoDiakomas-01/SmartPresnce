@@ -21,6 +21,9 @@
   justify-content: center;
   background-attachment: fixed;
 }
+#teacher > div > #loader{
+  height: 100dvh;
+}
 #teacher>button{
   position: fixed;
   bottom: 40px;

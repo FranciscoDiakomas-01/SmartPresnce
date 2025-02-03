@@ -1,12 +1,13 @@
-import qcode from '../../../../assets/qr.png'
-import './index.css'
 
+import './index.css'
+import QRCode from 'react-qr-code'
 export default function TecherQrCode(){
 
-  return(
-    <article id='qrcodePro'>
-      <img src={qcode} alt='QrCode'/>
+  const token  = String(localStorage.getItem("token"))
+  return (
+    <article id="qrcodePro">
+      <QRCode value={token} size={256} bgColor='var(--blue2)' fgColor='white'  />
     </article>
-  )
+  );
 
 }

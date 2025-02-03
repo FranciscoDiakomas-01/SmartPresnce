@@ -1,46 +1,62 @@
-import { FaArrowCircleLeft, FaArrowCircleRight, FaArrowRight, FaSync, FaUser } from "react-icons/fa"
-import './index.css'
-import getDate from "./getDate"
-import { DashBoard } from "../../services/admin"
-import Loader from "../../componets/Loader"
-import { useEffect, useState } from "react"
-export default function Home(){
-  const [date , setDate ] = useState(getDate())
+import { FaArrowCircleLeft, FaArrowCircleRight, FaUser } from "react-icons/fa";
+import "./index.css";
+import getDate from "./getDate";
+import { DashBoard, getAllLatest } from "../../services/admin";
+import Loader from "../../componets/Loader";
+import { useEffect, useState } from "react";
+export default function Home() {
+  const [date, setDate] = useState(getDate());
   const [isLoad, setLoad] = useState(true);
-  const [dashBoardData , setDashBoard] = useState< {
-    total_teacher : number,
-    total_coord : number
-  }>()
-  useEffect(()=> {
+  const [page, setPage] = useState(1);
+  const [lastpage, setLastPage] = useState(1);
+  const [last, setLast] = useState<IPresence[]>([]);
+  const [dashBoardData, setDashBoard] = useState<{
+    total_teacher: number;
+    total_coord: number;
+  }>();
+  useEffect(() => {
     setLoad(true);
     async function dashBoard() {
-      const response = await DashBoard()
-      setDashBoard(response)
+      const response = await DashBoard();
+      setDashBoard(response);
     }
-    dashBoard()
-    setTimeout(( )=> {
-      setLoad(false)
-    } , 2000)
-  }, [])
+    dashBoard();
+    setTimeout(() => {
+      setLoad(false);
+    }, 2000);
+  }, []);
 
-  useEffect(()=>{
-    const interval = setInterval(()=>{
-      setDate(getDate())
-    } , 1000)
-    return ()=>{
-      clearInterval(interval)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDate(getDate());
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  });
+  useEffect(() => {
+    //get latest presences
+    async function get() {
+      const response = await getAllLatest(page);
+      if (response?.lastpage == 0) {
+        response.lastpage = 1;
+      }
+      setLast(response?.data);
+      setLastPage(response?.lastpage);
     }
-  })
-  const last = [
-    
-    {
-      name : "Francisco",
-      lastname : "Diakomas",
-      date : "10/01/2025",
-      hour : "15:35:40",
-      status : "Presente"
-    }
-  ]
+    get();
+    const interval = setInterval(() => {
+      get();
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [page]);
+  interface IPresence {
+    name: string;
+    date: string;
+    status: string;
+  }
   return (
     <section id="home">
       {isLoad ? (
@@ -72,67 +88,79 @@ export default function Home(){
               </div>
             </span>
           </aside>
+          <article>
+            {Array.isArray(last) && last?.length > 0 && (
+              <h1>Últimos resistros</h1>
+            )}
+          </article>
           <span>
-            <article>
-              <form>
-                <label htmlFor="date">Filtre por data</label>
-                <input type="date" name="date" />
-                <button>
-                  <FaArrowRight />
-                </button>
-              </form>
-            </article>
-
-            <table>
-              {last.length > 0 ? (
-                <>
+            {Array.isArray(last) && last?.length > 0 ? (
+              <>
+                <table>
                   <thead>
                     <tr>
                       <td>Data</td>
-                      <td>Nome Professor</td>
+                      <td>Professor</td>
                       <td>Status</td>
                     </tr>
                   </thead>
                   <tbody>
                     {last.map((user, index) => (
                       <tr key={index}>
-                        <td>
-                          {user.date + " / " + user.hour + " - " + user.hour}
-                        </td>
-                        <td>{user.name + " " + user.lastname}</td>
+                        <td>{user.date}</td>
+                        <td>{user.name}</td>
                         <td
                           style={{
-                            color: user.status.includes("Pr")
-                              ? "green"
-                              : user.status.includes("A")
-                              ? "red"
-                              : "orange",
+                            color:
+                              user?.status == "1"
+                                ? "green"
+                                : user.status == "2"
+                                ? "red"
+                                : "orange",
                           }}
                         >
-                          {user.status}
+                          {user?.status == "1"
+                            ? "Presente"
+                            : user.status == "2"
+                            ? "Ausente"
+                            : "Pendente"}
                         </td>
                       </tr>
                     ))}
                   </tbody>
-                </>
-              ) : (
-                <h1>Sem Registros Cadastrados</h1>
-              )}
-            </table>
-            <footer>
-              <p>1 de 1</p>
-              <span>
-                <button>
-                  <FaSync></FaSync>
-                </button>
-                <button>
-                  <FaArrowCircleLeft></FaArrowCircleLeft>
-                </button>
-                <button>
-                  <FaArrowCircleRight></FaArrowCircleRight>
-                </button>
-              </span>
-            </footer>
+                </table>
+                <footer>
+                  <p>
+                    {page} de {lastpage}{" "}
+                  </p>
+                  <span>
+                    <button
+                      onClick={() => {
+                        if (page == 1) {
+                          return;
+                        }
+                        setPage((prev) => prev - 1);
+                      }}
+                    >
+                      <FaArrowCircleLeft></FaArrowCircleLeft>
+                    </button>
+                    <button
+                      onClick={() => {
+                        if (lastpage > page) {
+                          setPage((prev) => prev + 1);
+                          return;
+                        }
+                        setPage(lastpage);
+                      }}
+                    >
+                      <FaArrowCircleRight></FaArrowCircleRight>
+                    </button>
+                  </span>
+                </footer>
+              </>
+            ) : (
+              <h1>Sem Registros Cadastrados</h1>
+            )}
           </span>
         </>
       )}

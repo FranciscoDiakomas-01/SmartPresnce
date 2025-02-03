@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import "./index.css";
 import { getAdminData, updateAdmin } from "../../services/admin";
 import { useEffect, useState, type FormEvent } from "react";
@@ -12,49 +13,56 @@ export default function Profile() {
     oldpassword: string;
     oldemail: string;
   }
-  const [admin, setAdmin] = useState<User>({
-    name: "",
-    email: "",
-    lastname: "",
-    password: "",
-    oldemail : "",
-    oldpassword : ""
-  });
+
   const [load, setLoad] = useState(true);
-  const [msg , setMsg] = useState("")
+  const [msg, setMsg] = useState("");
+  const [lastname, setLastName] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [oldemail, setOldEmail] = useState("");
+  const [oldpassword, setOlpassword] = useState("");
+  const [ reload , setReload] = useState(false)
   useEffect(() => {
     async function getAdm() {
       setLoad(true);
       const response = await getAdminData();
-      console.log(response);
-      setAdmin(response);
+      setName((prev) => response.name);
+      setLastName((prev) => response.lastname);
+      setOldEmail((prev) => response.email);
     }
     getAdm();
     setTimeout(() => {
       setLoad(false);
     }, 2500);
-  }, []);
+  }, [reload]);
 
   async function update(e: FormEvent) {
     e.preventDefault();
-    if(!admin.password || !admin.email){
-      admin.password = admin.oldpassword
-      admin.email = admin.oldemail
-    }
-    if (!admin.name || !admin.password || !admin.lastname) {
-      setMsg("Preencha os campos")
+    if (!name || !oldemail || !oldpassword) {
+      setMsg("Preencha os campos obrigatórios");
+      setTimeout(() => {
+        setMsg("");
+      }, 1500);
       return;
     } else {
-      const response = await updateAdmin(admin);
-      setMsg(response?.msg ? "Perfil alterado!" : response?.error)
-      if (response?.msg == "updated") {
-        setTimeout(() => {
-          location.reload();
-        }, 2000);
-        return;
-      } else {
-        return;
-      }
+      const body: User = {
+        name,
+        lastname,
+        oldpassword,
+        email,
+        password,
+        oldemail,
+      };
+      const response = await updateAdmin(body);
+      setMsg(response?.msg ? response?.msg : response?.error);
+      setOlpassword((prev) => "");
+      setEmail((prev) => "");
+      setPassword((prev) => "");
+      setTimeout(() => {
+        setMsg("")
+        setReload(prev => !prev)
+      }, 2000);
     }
   }
   return (
@@ -66,8 +74,7 @@ export default function Profile() {
       ) : (
         <form onSubmit={update}>
           <span>
-            {admin.name.charAt(0).toUpperCase() +
-              admin?.lastname.charAt(0).toUpperCase()}
+            {name.charAt(0).toUpperCase() + lastname.charAt(0).toUpperCase()}
           </span>
           <aside>
             <div>
@@ -75,10 +82,10 @@ export default function Profile() {
               <input
                 id="name"
                 placeholder="Entre com seu nome"
-                value={admin?.name}
+                value={name}
                 required
                 onChange={(e) => {
-                  setAdmin((prev) => ({ ...prev, name: e.target.value }));
+                  setName((prev) => e.target.value);
                 }}
               />
             </div>
@@ -86,11 +93,11 @@ export default function Profile() {
               <label htmlFor="lastname">Sobrenome</label>
               <input
                 id="lastname"
-                value={admin?.lastname}
+                value={lastname}
                 placeholder="Entre com seu sobrenome"
                 required
                 onChange={(e) => {
-                  setAdmin((prev) => ({ ...prev, lastname: e.target.value }));
+                  setLastName((prev) => e.target.value);
                 }}
               />
             </div>
@@ -98,36 +105,37 @@ export default function Profile() {
               <label htmlFor="email">Email</label>
               <input
                 id="email"
-                value={admin?.email}
+                value={oldemail}
                 placeholder="Entre com seu email"
                 type="email"
                 required
                 onChange={(e) => {
-                  setAdmin((prev) => ({ ...prev, oldemail: e.target.value }));
+                  setOldEmail((prev) => e.target.value);
                 }}
               />
             </div>
+
             <div>
               <label htmlFor="pass">Senha</label>
               <input
                 id="pass"
-                placeholder="Entre com sua antiga senha"
+                placeholder="Entre com a sua  senha"
                 type="password"
+                value={oldpassword}
                 required
                 onChange={(e) => {
-                  setAdmin((prev) => ({ ...prev, olpassword: e.target.value }));
+                  setOlpassword((prev) => e.target.value);
                 }}
               />
             </div>
             <div>
-              <label htmlFor="pass">Novo email</label>
+              <label htmlFor="email">Novo Email</label>
               <input
-                id="pass"
-                placeholder="Entre com um novo email (opcional)"
-                type="password"
-                required
+                id="email"
+                placeholder="Entre com seu email (opcional)"
+                type="email"
                 onChange={(e) => {
-                  setAdmin((prev) => ({ ...prev, email: e.target.value }));
+                  setEmail((prev) => e.target.value);
                 }}
               />
             </div>
@@ -137,9 +145,8 @@ export default function Profile() {
                 id="pass"
                 placeholder="Entre com nova senha (opcional)"
                 type="password"
-                required
                 onChange={(e) => {
-                  setAdmin((prev) => ({ ...prev, password: e.target.value }));
+                  setPassword((prev) => e.target.value);
                 }}
               />
             </div>
@@ -157,7 +164,7 @@ export default function Profile() {
           </div>
           <p
             style={{
-              color: msg.includes("updated") ? "var(--blue2)" : "",
+              color: msg?.includes("Perfil") ? "var(--blue2)" : "",
             }}
           >
             {msg}

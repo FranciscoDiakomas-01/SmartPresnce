@@ -105,7 +105,6 @@ export default function Agenda() {
       return;
     } else {
       const response = await CreateCalendar(calendar);
-      console.log(response);
       if (response?.data == "inserted") {
         toast.success("Criado com sucesso");
       } else {

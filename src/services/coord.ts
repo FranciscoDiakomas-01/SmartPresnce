@@ -25,7 +25,6 @@ export async function getAllCoordBySearch(text : string) {
     },
   });
   const response = await API.json();
-  console.log(response)
   return response;
 }
 
@@ -37,6 +36,18 @@ export async function CoorddeleteByID(id: number) {
       authorization: `Bearer ${token}`,
     },
     method: "DELETE",
+  });
+  const response = await API.json();
+  return response;
+}
+
+export async function getCoorbyId() {
+  const url = `http://localhost:8080/coord`;
+  const token = localStorage.getItem("token");
+  const API = await fetch(url, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
   });
   const response = await API.json();
   return response;
@@ -58,7 +69,6 @@ export async function CoordtoogleStatus(coordid: number, status: boolean) {
     body: JSON.stringify(body),
   });
   const response = await API.json();
-  console.log(response);
   return response;
 }
 
@@ -78,6 +88,36 @@ export async function CreateCoord(coord: ICoord) {
     const response = await API.json();
     return response;
   } catch (error) {
-    console.log(error);
+    return error as string
   }
+}
+
+interface ICoordUpdate {
+  name: string;
+  lastname: string;
+  email: string;
+  password: string;
+  oldpassword: string;
+  oldemail: string;
+}
+
+export async function updateCoord(coord: ICoordUpdate) {
+  if (!coord.email) {
+    coord.email = coord.oldemail;
+  }
+  if (!coord.password) {
+    coord.password = coord.oldpassword;
+  }
+  const url = "http://localhost:8080/coord";
+  const token = localStorage.getItem("token");
+  const API = await fetch(url, {
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    method: "PUT",
+    body: JSON.stringify(coord),
+  });
+  const response = await API.json();
+  return response;
 }

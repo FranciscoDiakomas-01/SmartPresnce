@@ -4,8 +4,13 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  min-height: 200px;
 }
 
+#agendasTeacher #loader > * {
+  border-color: var(--white);
+  border-top: solid 5px transparent;
+}
 #agendasTeacher article table {
   width: 100%;
 }

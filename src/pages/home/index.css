@@ -157,9 +157,6 @@ section > div #loader{
   border-radius: 5px;
 }
 
-#home footer button:first-of-type{
-  background-color: var(--blue2);
-}
 #home table {
   width: 98%;
 }

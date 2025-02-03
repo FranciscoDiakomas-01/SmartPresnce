@@ -79,17 +79,15 @@ export default function UserDetails() {
                 e.preventDefault()
                 const array = date.split("-")
                 array.reverse()
-                setDate(prev => array.join("/"));
+                const defDate = array.join("/")
                 const data : IVacation = {
                   id : user.id,
                   status : 3,
-                  vacation : date
+                  vacation : defDate
                 }
                 const response = await Vacation(data)
-                console.log(data)
-                console.log(response)
                 if (response?.error) {
-                  toast.error("Erro ao cadastrar");
+                  toast.error(response?.error);
                   return
                 }
                 toast.success("Professor em férias")

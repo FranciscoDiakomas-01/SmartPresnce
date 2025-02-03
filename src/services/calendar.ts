@@ -1,3 +1,4 @@
+
 export async function getAllCalendarByTeacherId(id: number) {
   const url = `http://localhost:8080/calendar/${id}`;
   const token = localStorage.getItem("token");
@@ -10,6 +11,31 @@ export async function getAllCalendarByTeacherId(id: number) {
   return response;
 }
 
+
+export async function getAllCalendarByTeacher() {
+  const url = `http://localhost:8080/calendar`;
+  const token = localStorage.getItem("token");
+  const API = await fetch(url, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+  const response = await API.json();
+  return response;
+}
+
+
+export async function getTeacherCalendarByToken() {
+  const token = localStorage.getItem("token");
+  const url = `http://localhost:8080/calendarbytoken`;
+  const API = await fetch(url, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+  const response = await API.json();
+  return response;
+}
 
 export async function deleteCalendarVyId(id: number) {
   const url = `http://localhost:8080/calendar/${id}`;
@@ -34,7 +60,6 @@ export async function getAllNames() {
     },
   });
   const response = await API.json();
-  console.log(response)
   return response;
 }
 

@@ -23,8 +23,8 @@ export default function Login() {
     setLoad(true)
     const response = await loginFunc(user)
     setTimeout(()=>{
-      if (response?.error == "invalid email or password") {
-        toast.warning("Email e senhas inválido");
+      if (response?.error) {
+        toast.warning(response.error);
         setLoad(false);
         return;
       } else if (String(response?.msg).includes("wrong credentials")) {
@@ -59,7 +59,6 @@ export default function Login() {
           type="email"
           name="email"
           id="email"
-          value={user?.email}
           onChange={(e) => {
             setUser((prev) => ({
               ...prev,
@@ -72,7 +71,6 @@ export default function Login() {
           placeholder="entre com uma senha"
           type="password"
           id="password"
-          value={user?.password}
           onChange={(e) => {
             setUser((prev) => ({ ...prev, password: e.target.value }));
           }}

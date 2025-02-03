@@ -1,147 +1,150 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useState } from "react";
 import "./index.css";
-
-import "./index.css";
-import {
-  FaArrowCircleLeft,
-  FaArrowCircleRight,
-  FaSearch,
-} from "react-icons/fa";
+import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+import Loader from "../../../componets/Loader";
+import { getTeacherPresence } from "../../../services/teacher";
 
 export default function TeacherDash() {
-  const data = {
-    total_presence: 20,
-    total_missings: 30,
-    total_lates: 40,
-  };
-  const presence = [
-    {
-      id: 1,
-      date: "12/02/2025 , 12:10:00 - 14:00:00",
-      week: "Quarta-feira",
-      status: "Presente",
-      atraso: "",
-    },
-    {
-      id: 1,
-      date: "12/02/2025 , 12:10:00 - 14:00:00",
-      week: "Sexta-feira",
-      status: "Ausente",
-      atraso: "40min",
-    },
-    {
-      id: 1,
-      date: "12/02/2025 , 12:10:00 - 14:00:00",
-      week: "Quarta-feira",
-      status: "Ausente",
-      atraso: "12min",
-    },
-    {
-      id: 1,
-      date: "12/02/2025 , 12:10:00 - 14:00:00",
-      week: "Sexta-feira",
-      status: "Pendente",
-      atraso: "12min",
-    },
-  ];
+  const [page, setPage] = useState<number>(1);
+  const [lastpage, setLastpage] = useState<number>(1);
+  const [load, setLoad] = useState(true);
+  const [data, setData] = useState({
+    total_presence: 0,
+    total_missings: 0,
+  });
+  interface IPresence {
+    id: number;
+    teacher_id: number;
+    date: string;
+    status: number;
+  }
+
+  const [presence, setPresence] = useState<IPresence[]>([]);
+  useEffect(() => {
+    async function get() {
+      const response = await getTeacherPresence(page);
+      setPresence(response?.data);
+      setData(() => ({
+        total_missings: response?.missings,
+        total_presence: response?.presence,
+      }));
+      setLastpage((prev) => response.lastpage);
+    }
+    get();
+    setTimeout(() => {
+      setLoad(false);
+    }, 2500);
+  }, [page]);
   return (
     <section id="presenceTeacher">
       <article>
-        <aside>
-          <span>
-            <h1>Presenças</h1>
-            <strong>{data.total_presence}</strong>
-          </span>
-          <span>
-            <h1>Faltas</h1>
-            <strong>{data.total_missings}</strong>
-          </span>
-          <span>
-            <h1>Atrasos</h1>
-            <strong>{data.total_lates}</strong>
-          </span>
-        </aside>
-        <form>
-          <label htmlFor="date">Filtre por data</label>
-          <input type="date" name="date" />
-          <button>
-            <FaSearch />
-          </button>
-        </form>
-        <article>
-          {Array.isArray(presence) && presence?.length > 0 ? (
-            <div>
-              {presence.map((agenda) => (
+        {load ? (
+          <Loader />
+        ) : (
+          <>
+            <aside>
+              <span>
+                <h1>Presenças</h1>
+                <strong>{data.total_presence}</strong>
+              </span>
+              <span>
+                <h1>Faltas</h1>
+                <strong>{data.total_missings}</strong>
+              </span>
+            </aside>
+            <article>
+              {Array.isArray(presence) && presence?.length > 0 ? (
                 <div>
-                  <span>Data : {agenda.date}</span>
-                  <span>
-                    Status :
-                    <p
-                      style={{
-                        color: agenda.status.includes("Pr")
-                          ? "green"
-                          : agenda.status.includes("A")
-                          ? "red"
-                          : "orange",
-                      }}
-                    >
-                      {agenda.status}
-                    </p>
-                  </span>
-                  {!agenda.status.includes("Pr") && <span>Atraso :{agenda.atraso}</span>}
-                  <span>Dia de Semana : {agenda.week}</span>
+                  {presence.map((agenda) => (
+                    <div>
+                      <span>Data : {agenda.date}</span>
+                      <span>
+                        Status :
+                        <p
+                          style={{
+                            color:
+                              agenda.status == 1
+                                ? "green"
+                                : agenda.status == 2
+                                ? "red"
+                                : "orange",
+                          }}
+                        >
+                          {agenda.status}
+                        </p>
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          ) : (
-            <h1>Sem Registros</h1>
-          )}
+              ) : (
+                <h1>Sem Registros</h1>
+              )}
 
-          {Array.isArray(presence) && presence?.length > 0 ? (
-            <table>
-              <thead>
-                <tr>
-                  <td>Data</td>
-                  <td>Status</td>
-                  <td>Atraso</td>
-                  <td>Dia Semana</td>
-                </tr>
-              </thead>
-              <tbody>
-                {presence.map((agenda) => (
-                  <tr>
-                    <td>{agenda.date}</td>
-                    <td
-                      style={{
-                        color: agenda.status.includes("Pr")
-                          ? "green"
-                          : agenda.status.includes("A")
-                          ? "red"
-                          : "orange",
-                      }}
-                    >
-                      {agenda.status}
-                    </td>
-                    <td>{agenda.atraso}</td>
-                    <td>{agenda.week}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <h1>Sem Registros</h1>
-          )}
-        </article>
-        <footer>
-          <p>1 de 1</p>
-          <div>
-            <button>
-              <FaArrowCircleLeft />
-            </button>
-            <button>
-              <FaArrowCircleRight />
-            </button>
-          </div>
-        </footer>
+              {Array.isArray(presence) && presence?.length > 0 ? (
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Data</td>
+                      <td>Status</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {presence.map((agenda) => (
+                      <tr>
+                        <td>{agenda.date}</td>
+                        <td
+                          style={{
+                            color:
+                              agenda.status == 1
+                                ? "green"
+                                : agenda.status == 2
+                                ? "red"
+                                : "orange",
+                          }}
+                        >
+                          {agenda.status == 1
+                            ? "Presente"
+                            : agenda.status == 2
+                            ? "Ausente"
+                            : "Pendete"}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <h1>Sem Registros</h1>
+              )}
+            </article>
+            <footer>
+              <p>1 de 1</p>
+              <div>
+                <button
+                  onClick={() => {
+                    if (page == 1) {
+                      return;
+                    }
+                    setPage((prev) => prev - 1);
+                  }}
+                >
+                  <FaArrowCircleLeft></FaArrowCircleLeft>
+                </button>
+                <button
+                  onClick={() => {
+                    if (lastpage > page) {
+                      setPage((prev) => prev + 1);
+                      return;
+                    }
+                    setPage(lastpage);
+                  }}
+                >
+                  <FaArrowCircleRight></FaArrowCircleRight>
+                </button>
+              </div>
+            </footer>
+          </>
+        )}
       </article>
     </section>
   );
