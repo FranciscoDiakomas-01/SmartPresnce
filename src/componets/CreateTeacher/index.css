@@ -15,6 +15,9 @@
   gap: 40px;
   border-radius: 10px;
 }
+#teachersingup  #loader{
+  overflow: hidden;
+}
 
 #teachersingup > form aside {
   display: grid;
@@ -49,4 +52,15 @@
 }
 #teachersingup > form > div button:last-of-type {
   background-color: var(--black);
+}
+
+
+@media screen and (max-width : 1024px) {
+  #teachersingup > form aside {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  padding: 0 10px;
+}
 }

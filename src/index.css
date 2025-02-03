@@ -1,8 +1,16 @@
 :root {
   --gray: #f0f0f0;
-  --green: #40b90f;
   --blue: #b4fcd9;
   --white: #ffff;
   --blue2: #2bd688;
   --black: #282828;
+  --red: #e80e3d;
+}
+
+::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--black);
+  border-radius: 2px;
 }

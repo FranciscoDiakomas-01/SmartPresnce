@@ -40,7 +40,8 @@ const QRCodeReader = () => {
   };
 
   return (
-    <div id="qr">
+    <section>
+         <div id="qr">
       <h1>Leitor de QR Code</h1>
       <aside>
 
@@ -57,6 +58,8 @@ const QRCodeReader = () => {
         </div>
       )}
     </div>
+    </section>
+ 
   );
 };
 

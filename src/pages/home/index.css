@@ -1,18 +1,27 @@
 #home{
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  padding:20px;
+  gap: 20px;
+  padding:10px;
+  height: auto;
+  padding-bottom: 30px;
+  padding-top: 20px;
+  width: 99%;
+  position: relative;
 }
-#home header{
-  width: 100%;
+
+section > div #loader{
   display: flex;
-  justify-content: space-between;
+  place-self: center;
+  height: 100vh;
+  overflow: hidden;
   align-items: center;
+  justify-content: center;
+
 }
 
 #home > aside{
-  width: 100%;
+  width: 99%;
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -20,7 +29,7 @@
 
 #home > aside span:first-of-type{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 15px;
   width: 100%;
 }
@@ -110,4 +119,100 @@
   justify-content: center;
   border-radius: 50%;
 
+}
+#home >  span  article{
+  width: 97%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#home >  span  article form{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 14pt;
+}
+#home >  span  article button{
+  background-color: var(--blue2);
+  color: var(--white);
+  height: 47px;
+  width: 60px;
+  margin-left: -20px;
+}
+#home >  span  article input{
+  width: 400px;
+}
+#home footer{
+  width: 97%;
+  display: flex;
+  justify-content: space-between;
+}
+#home footer button{
+  width: 70px;
+  height: 45px;
+  background-color: var(--black);
+  color: var(--white);
+  margin: 0 5px;
+  font-size: 15pt;
+  border-radius: 5px;
+}
+
+#home footer button:first-of-type{
+  background-color: var(--blue2);
+}
+#home table {
+  width: 98%;
+}
+#home table tr {
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#home > table td:last-of-type{
+  width: 220px;
+}
+
+#home table thead tr {
+  background-color: var(--black);
+  color: var(--white);
+}
+#home table tbody tr:nth-last-of-type(even) {
+  background-color: var(--white);
+}
+#home table button {
+  background-color: var(--black);
+  height: 40px;
+  width: 130px;
+  border-radius: 5px;
+  display: flex;
+  place-self: center;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+#home table td:nth-of-type(4) button{
+  background-color: var(--blue2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 12pt;
+}
+
+#home table tbody tr:hover{
+  background-color: var(--blue);
+}
+
+@media screen and (max-width : 1024px) {
+  #home > aside span:first-of-type{
+  grid-template-columns: 1fr 1fr ;
+}
+#home{
+  display: flex;
+  gap: 20px;
+  padding:10px;
+  height: auto;
+  width: 100%;
+}
 }

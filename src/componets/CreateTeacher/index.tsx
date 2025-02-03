@@ -1,85 +1,91 @@
-import './index.css'
+import { useState } from "react";
+import "./index.css";
+import { toast } from "react-toastify";
+import Loader from "../Loader";
+import { CreateTeacher } from "../../services/teacher";
 
-
-export default function CreateTeache(){
-  
-  return(
-    <section id='teachersingup'>
-      <form>
+export default function CreateTeache() {
+  const [teacher, setTeacher] = useState({
+    email: "",
+    lastname: "",
+    name: "",
+  });
+  const [load, setLoad] = useState(false);
+  return (
+    <section id="teachersingup">
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+          if (!teacher.email || !teacher.lastname || !teacher.name) {
+            toast.warn("Preencha todos os Campos");
+            return;
+          } else {
+            setLoad(true);
+            const response = await CreateTeacher(teacher);
+            setTimeout(() => {
+              setLoad(false);
+              if (response?.msg == "created") {
+                toast.success("Criado com sucesso!");
+                setTeacher({ name: "", email: "", lastname: "" });
+                return;
+              } else {
+                toast.error(response?.error);
+                return;
+              }
+            }, 2500);
+          }
+        }}
+      >
         <h1>Cadastro de Professor</h1>
         <aside>
-        <div>
-          <label>
-            Nome
-          </label>
-        <input placeholder='Entre com seu nome' required/>
-        </div>
-        <div>
-          <label>
-            Sobrenome
-          </label>
-        <input placeholder='Entre com seu sobrenome'required/>
-        </div>
-        <div>
-          <label>
-            Email
-          </label>
-        <input placeholder='Entre com seu email' type='email' required/>
-        </div>
-
-        <div>
-          <label>
-            Data Nascimento
-          </label>
-        <input  type='date'required/>
-        </div>
-
-        <div>
-          <label>
-            Telefone
-          </label>
-        <input placeholder='Entre com seu telefone' type='tel'required/>
-        </div>
-        <div>
-          <label>
-            Nº do BI
-          </label>
-        <input placeholder='Entre com seu BI' type='text' required/>
-        </div>
-        <div>
-          <label>
-            Género
-          </label>
-          <select required>
-            <option>Selecione o seu género</option>
-            <option>Masculino</option>
-            <option>Femenino</option>
-            <option>Outro</option>
-          </select>
-        </div>
-        <div>
-          <label>
-            Disciplina
-          </label>
-          <select>
-            <option>Selecione uma disciplina</option>
-            <option>Masculino</option>
-            <option>Femenino</option>
-            <option>Outro</option>
-          </select>
-        </div>
+          <div>
+            <label htmlFor="name">Nome</label>
+            <input
+              id="name"
+              onChange={(e) => {
+                setTeacher((prev) => ({ ...prev, name: e.target.value }));
+              }}
+              placeholder="Entre com seu nome"
+              value={teacher.name}
+            />
+          </div>
+          <div>
+            <label htmlFor="lastname">Sobrenome</label>
+            <input
+              id="lastname"
+              onChange={(e) => {
+                setTeacher((prev) => ({ ...prev, lastname: e.target.value }));
+              }}
+              placeholder="Entre com seu sobrenome"
+              value={teacher.lastname}
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              onChange={(e) => {
+                setTeacher((prev) => ({ ...prev, email: e.target.value }));
+              }}
+              placeholder="Entre com seu email"
+              type="email"
+              value={teacher.email}
+            />
+          </div>
         </aside>
         <div>
-          <button>
-            Cadastrar
-          </button>
-          <button onClick={()=>{
-            history.back()
-          }}>
+          <button type="submit">Cadastrar</button>
+          <button
+            type="reset"
+            onClick={() => {
+              history.back();
+            }}
+          >
             Cancelar
           </button>
         </div>
+        {load && <Loader />}
       </form>
     </section>
-  )
+  );
 }
