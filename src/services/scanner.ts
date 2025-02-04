@@ -46,7 +46,6 @@ export async function updatePresence(token: string) {
       body: JSON.stringify(data),
     });
     const response = await API.json();
-    console.log(response);
     return response;
   } catch (error) {
     return error as string;

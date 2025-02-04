@@ -23,7 +23,6 @@ const QRCodeReader = () => {
         return
       },
       (error) => {
-        console.error("Erro ao escanear QR Code:", error);
       }
     );
     setScanner(newScanner);
@@ -51,7 +50,6 @@ const QRCodeReader = () => {
       return;
     } else {
       const response = await updatePresence(token);
-      console.log(response);
       setMsg(response?.error ? response?.error : response?.msg);
       setTimeout(() => {
         setMsg("");

@@ -80,7 +80,6 @@ export async function CreateTeacher(teacher: Iteacher) {
       body: JSON.stringify(teacher),
     });
     const response = await API.json();
-    console.log(response)
     return response;
   } catch (error) {
    return error as string
