@@ -1,5 +1,5 @@
 #presenceTeacher  > article{
-  width: 90%;
+  width: 70%;
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@
   justify-content: space-between;
 }
 #presenceTeacher  > article aside span{
-  height: 100px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,6 +99,7 @@
   background-color: var(--blue);
 }
 @media screen and (max-width : 767px) {
+
    #presenceTeacher  > article {
     margin-top: 100px;
     margin-bottom: 100px;

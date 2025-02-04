@@ -14,3 +14,7 @@
   background-color: var(--black);
   border-radius: 2px;
 }
+*::selection {
+  background-color: var(--blue2);
+  color: var(--white);
+}

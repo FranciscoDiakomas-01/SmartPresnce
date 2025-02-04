@@ -8,6 +8,9 @@
   justify-content: center;
 }
 
+#qr  #loader{
+  margin-top: -400px;
+}
 #qr button {
   width: 250px;
   margin-left: 10px;
@@ -24,9 +27,9 @@
 }
 
 #qr aside {
-  height: 400px;
+  height: 600px;
   width: 800px;
-  border: solid 1px var(--blue2);
+  border: solid var(--blue2) 1px ;
   padding: 20px;
 }
 
@@ -52,4 +55,7 @@
  #qr aside  * {
   overflow: hidden;
  }
+ #qr button {
+  width: 160px;
+}
 }

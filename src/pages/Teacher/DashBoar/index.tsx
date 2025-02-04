@@ -29,12 +29,19 @@ export default function TeacherDash() {
         total_missings: response?.missings,
         total_presence: response?.presence,
       }));
-      setLastpage((prev) => response.lastpage);
+      setLastpage((prev) => response.lastpage > 0 ? response?.lastpage : 1);
     }
     get();
+    const interval = setInterval(()=>{
+      get()
+    },1500)
+
     setTimeout(() => {
       setLoad(false);
     }, 2500);
+    return () => {
+      clearInterval(interval)
+    }
   }, [page]);
   return (
     <section id="presenceTeacher">
@@ -71,14 +78,24 @@ export default function TeacherDash() {
                                 : "orange",
                           }}
                         >
-                          {agenda.status}
+                          {agenda.status == 1
+                            ? "Presente"
+                            : agenda.status == 2
+                            ? "Ausente"
+                            : "Pendete"}
                         </p>
                       </span>
                     </div>
                   ))}
                 </div>
               ) : (
-                <h1>Sem Registros</h1>
+                <h1
+                  style={{
+                    textAlign: "center",
+                  }}
+                >
+                  Sem Registros
+                </h1>
               )}
 
               {Array.isArray(presence) && presence?.length > 0 ? (
@@ -113,9 +130,7 @@ export default function TeacherDash() {
                     ))}
                   </tbody>
                 </table>
-              ) : (
-                <h1>Sem Registros</h1>
-              )}
+              ) : null}
             </article>
             <footer>
               <p>1 de 1</p>

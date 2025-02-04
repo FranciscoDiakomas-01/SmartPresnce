@@ -1,12 +1,12 @@
 
 import './index.css'
-import QRCode from 'react-qr-code'
 export default function TecherQrCode(){
 
   const token  = String(localStorage.getItem("token"))
+  const url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${token}`
   return (
     <article id="qrcodePro">
-      <QRCode value={token} size={256} bgColor='var(--blue2)' fgColor='white'  />
+      <img src={url}/>
     </article>
   );
 
