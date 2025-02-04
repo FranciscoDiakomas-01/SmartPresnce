@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import createPresence, { updatePresence } from "../../services/scanner";
 import "./index.css";
+import Loader from "../Loader";
 const QRCodeReader = () => {
   const [qrCodeData, setQrCodeData] = useState<null | string>(null);
   const [scanner, setScanner] = useState<null | Html5QrcodeScanner>(null);
@@ -17,12 +18,13 @@ const QRCodeReader = () => {
     newScanner.render(
       async (decodedText) => {
         setMsg("Token óbtido , por favor aguarde");
+        document.getElementById("stopRead")?.click();
         await presence(type, decodedText);
         setQrCodeData(decodedText);
-        stopScanning();
-        return
+        return;
       },
       (error) => {
+        setQrCodeData(error);
       }
     );
     setScanner(newScanner);
@@ -39,25 +41,42 @@ const QRCodeReader = () => {
     }
     if (type == 1) {
       const response = await createPresence(token);
-      setMsg(response?.error ? response?.error : response?.msg);
-      token = "";
       setTimeout(() => {
-        setMsg("");
         if (response?.error) {
-          stopScanning();
+          setMsg(response.error);
+          setTimeout(() => {
+            setMsg("");
+          }, 4000);
+          return;
+        } else if (response?.msg) {
+          setMsg(response.msg);
+          setTimeout(() => {
+            setMsg("");
+          }, 4000);
+          return;
+        } else {
+          setMsg("Token inválido");
         }
-      }, 4000);
-      return;
+      }, 2500);
     } else {
       const response = await updatePresence(token);
-      setMsg(response?.error ? response?.error : response?.msg);
       setTimeout(() => {
-        setMsg("");
         if (response?.error) {
-          stopScanning();
+          setMsg(response.error);
+          setTimeout(() => {
+            setMsg("");
+          }, 4000);
+          return;
+        } else if (response?.msg) {
+          setMsg(response.msg);
+          setTimeout(() => {
+            setMsg("");
+          }, 4000);
+          return;
+        } else {
+          setMsg("Token inválido");
         }
-      }, 4000);
-      token = "";
+      }, 2500);
       return;
     }
   }
@@ -67,7 +86,6 @@ const QRCodeReader = () => {
     }
     setIsScanning(false);
     setQrCodeData(null);
-    setMsg("");
   };
 
   return (
@@ -92,7 +110,12 @@ const QRCodeReader = () => {
           >
             Saída
           </button>
-          <button id="stopRead" onClick={stopScanning}>
+          <button
+            id="stopRead"
+            onClick={() => {
+              stopScanning();
+            }}
+          >
             Parar Leitura
           </button>
         </div>
