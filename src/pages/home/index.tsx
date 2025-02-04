@@ -1,11 +1,9 @@
 import { FaArrowCircleLeft, FaArrowCircleRight, FaUser } from "react-icons/fa";
 import "./index.css";
-import getDate from "./getDate";
 import { DashBoard, getAllLatest } from "../../services/admin";
 import Loader from "../../componets/Loader";
 import { useEffect, useState } from "react";
 export default function Home() {
-  const [date, setDate] = useState(getDate());
   const [isLoad, setLoad] = useState(true);
   const [page, setPage] = useState(1);
   const [lastpage, setLastPage] = useState(1);
@@ -26,14 +24,6 @@ export default function Home() {
     }, 2000);
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDate(getDate());
-    }, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  });
   useEffect(() => {
     //get latest presences
     async function get() {
@@ -65,9 +55,6 @@ export default function Home() {
         </div>
       ) : (
         <>
-          <header>
-            <p>{date}</p>
-          </header>
           <aside>
             <span>
               <div key={2}>

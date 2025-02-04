@@ -166,7 +166,7 @@ export default function Agenda() {
                 >
                   <option>Selecione um dia de semana</option>
                   {weekDays.map((day) => (
-                    <option value={day}>{day}</option>
+                    <option value={day} key={day}>{day}</option>
                   ))}
                 </select>
 
