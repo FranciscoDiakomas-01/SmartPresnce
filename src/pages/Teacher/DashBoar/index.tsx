@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { useEffect, useState } from "react";
 import "./index.css";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
@@ -29,7 +29,7 @@ export default function TeacherDash() {
         total_missings: response?.missings,
         total_presence: response?.presence,
       }));
-      setLastpage((prev) => response.lastpage > 0 ? response?.lastpage : 1);
+      setLastpage(response.lastpage > 0 ? response?.lastpage : 1);
     }
     get();
     const interval = setInterval(()=>{

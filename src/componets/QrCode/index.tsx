@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { useState } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import createPresence, { updatePresence } from "../../services/scanner";
@@ -20,7 +20,7 @@ const QRCodeReader = () => {
         return;
       },
       (error) => {
-        setMsg("Erro de Token");
+        setMsg(error);
       }
     );
     setScanner(newScanner);
