@@ -4,7 +4,6 @@ import "./index.css";
 import { useEffect, useState, type FormEvent } from "react";
 import { getTeacherbyId, updateTeacher } from "../../../services/teacher";
 import Loader from "../../../componets/Loader";
-
 export default function TeacherProfile() {
   interface User {
     name: string;
