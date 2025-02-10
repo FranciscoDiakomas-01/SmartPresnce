@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { useEffect, useState, type FormEvent } from "react";
 import { FaUser } from "react-icons/fa";
 import { getCoorbyId, updateCoord } from "../../../services/coord";
@@ -28,9 +28,9 @@ export default function CoordProfile() {
     async function getAdm() {
       setLoad(true);
       const response = await getCoorbyId();
-      setName((prev) => response?.data?.name);
-      setLastName((prev) => response?.data?.lastname);
-      setOldEmail((prev) => response?.data?.email);
+      setName(response?.data?.name);
+      setLastName(response?.data?.lastname);
+      setOldEmail(response?.data?.email);
     }
     getAdm();
     setTimeout(() => {
@@ -57,9 +57,9 @@ export default function CoordProfile() {
       };
       const response = await updateCoord(body);
       setMsg(response?.msg ? response?.msg : response?.error);
-      setOlpassword((prev) => "");
-      setEmail((prev) => "");
-      setPassword((prev) => "");
+      setOlpassword("");
+      setEmail("");
+      setPassword("");
       setTimeout(() => {
         setMsg("")
         setReload(prev => !prev)
@@ -85,7 +85,7 @@ export default function CoordProfile() {
                   value={name}
                   required
                   onChange={(e) => {
-                    setName((prev) => e.target.value);
+                    setName(e.target.value);
                   }}
                 />
               </span>
@@ -97,7 +97,7 @@ export default function CoordProfile() {
                   placeholder="Entre com seu sobrenome"
                   required
                   onChange={(e) => {
-                    setLastName((prev) => e.target.value);
+                    setLastName(e.target.value);
                   }}
                 />
               </span>
@@ -110,7 +110,7 @@ export default function CoordProfile() {
                   type="email"
                   required
                   onChange={(e) => {
-                    setOldEmail((prev) => e.target.value);
+                    setOldEmail(e.target.value);
                   }}
                 />
               </span>
@@ -123,7 +123,7 @@ export default function CoordProfile() {
                   value={oldpassword}
                   required
                   onChange={(e) => {
-                    setOlpassword((prev) => e.target.value);
+                    setOlpassword(e.target.value);
                   }}
                 />
               </span>
@@ -134,7 +134,7 @@ export default function CoordProfile() {
                   placeholder="Entre com seu email (opcional)"
                   type="email"
                   onChange={(e) => {
-                    setEmail((prev) => e.target.value);
+                    setEmail(e.target.value);
                   }}
                 />
               </span>
@@ -145,7 +145,7 @@ export default function CoordProfile() {
                   placeholder="Entre com nova senha"
                   type="password"
                   onChange={(e) => {
-                    setPassword((prev) => e.target.value);
+                    setPassword(e.target.value);
                   }}
                 />
               </span>

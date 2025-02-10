@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { BsUiChecksGrid } from "react-icons/bs";
 import { LuLogOut, LuUsersRound, LuUser, LuClock } from "react-icons/lu";
 import "./index.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaBars, FaCog, FaExclamation } from "react-icons/fa";
 
 export default function SideBar() {
@@ -12,12 +12,6 @@ export default function SideBar() {
     id: number;
     icon: React.ReactElement;
     url: string;
-  }
-  interface IUser {
-    id: number;
-    name: string;
-    lastname: string;
-    type: string;
   }
   const nav = useNavigate();
   const routes: IRoutes[] = [
@@ -53,11 +47,7 @@ export default function SideBar() {
       url: "/config",
     },
   ];
-  const user: IUser = {
-    id: 1,
-    lastname: "Admininistador",
-    type: "admin",
-  };
+
   const [active, setActive] = useState(1);
   const [open , setOpen] = useState(false)
   return (
@@ -112,8 +102,8 @@ export default function SideBar() {
           <div>ADM
           </div>
           <aside>
-            <strong>{user.lastname}</strong>
-            <i>{user.type}</i>
+            <strong>Administrador</strong>
+            <i>admin</i>
           </aside>
         </span>
         <button

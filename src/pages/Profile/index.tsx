@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import "./index.css";
 import { getAdminData, updateAdmin } from "../../services/admin";
 import { useEffect, useState, type FormEvent } from "react";
@@ -27,9 +27,9 @@ export default function Profile() {
     async function getAdm() {
       setLoad(true);
       const response = await getAdminData();
-      setName((prev) => response.name);
-      setLastName((prev) => response.lastname);
-      setOldEmail((prev) => response.email);
+      setName(response.name);
+      setLastName(response.lastname);
+      setOldEmail(response.email);
     }
     getAdm();
     setTimeout(() => {
@@ -56,9 +56,9 @@ export default function Profile() {
       };
       const response = await updateAdmin(body);
       setMsg(response?.msg ? response?.msg : response?.error);
-      setOlpassword((prev) => "");
-      setEmail((prev) => "");
-      setPassword((prev) => "");
+      setOlpassword("");
+      setEmail("");
+      setPassword("");
       setTimeout(() => {
         setMsg("")
         setReload(prev => !prev)
@@ -85,7 +85,7 @@ export default function Profile() {
                 value={name}
                 required
                 onChange={(e) => {
-                  setName((prev) => e.target.value);
+                  setName(e.target.value);
                 }}
               />
             </div>
@@ -97,7 +97,7 @@ export default function Profile() {
                 placeholder="Entre com seu sobrenome"
                 required
                 onChange={(e) => {
-                  setLastName((prev) => e.target.value);
+                  setLastName(e.target.value);
                 }}
               />
             </div>
@@ -110,7 +110,7 @@ export default function Profile() {
                 type="email"
                 required
                 onChange={(e) => {
-                  setOldEmail((prev) => e.target.value);
+                  setOldEmail(e.target.value);
                 }}
               />
             </div>
@@ -124,7 +124,7 @@ export default function Profile() {
                 value={oldpassword}
                 required
                 onChange={(e) => {
-                  setOlpassword((prev) => e.target.value);
+                  setOlpassword(e.target.value);
                 }}
               />
             </div>
@@ -135,7 +135,7 @@ export default function Profile() {
                 placeholder="Entre com seu email (opcional)"
                 type="email"
                 onChange={(e) => {
-                  setEmail((prev) => e.target.value);
+                  setEmail(e.target.value);
                 }}
               />
             </div>
@@ -146,7 +146,7 @@ export default function Profile() {
                 placeholder="Entre com nova senha (opcional)"
                 type="password"
                 onChange={(e) => {
-                  setPassword((prev) => e.target.value);
+                  setPassword(e.target.value);
                 }}
               />
             </div>

@@ -1,12 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { useState } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import createPresence, { updatePresence } from "../../../../services/scanner";
 import "../../../../componets/QrCode/index.css";
 const QRCodeReader = () => {
-  const [qrCodeData, setQrCodeData] = useState<null | string>(null);
   const [scanner, setScanner] = useState<null | Html5QrcodeScanner>(null);
-  const [isScanning, setIsScanning] = useState(false);
   const [msg, setMsg] = useState("");
   const startScanning = (type: number) => {
     const newScanner = new Html5QrcodeScanner(
@@ -18,15 +16,14 @@ const QRCodeReader = () => {
       async (decodedText) => {
         setMsg("Token óbtido , por favor aguarde");
         await presence(type, decodedText);
-        setQrCodeData(decodedText);
         stopScanning();
         return
       },
       (error) => {
+        setMsg(error)
       }
     );
     setScanner(newScanner);
-    setIsScanning(true);
   };
   async function presence(type: number, token: string) {
     if (token.length == 0) {
@@ -65,8 +62,6 @@ const QRCodeReader = () => {
     if (scanner) {
       scanner.clear();
     }
-    setIsScanning(false);
-    setQrCodeData(null);
     setMsg("");
   };
 

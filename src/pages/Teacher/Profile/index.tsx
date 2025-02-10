@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { FaUser } from "react-icons/fa";
 import "./index.css";
 import { useEffect, useState, type FormEvent } from "react";
@@ -28,9 +28,9 @@ export default function TeacherProfile() {
     async function getAdm() {
       setLoad(true);
       const response = await getTeacherbyId();
-      setName((prev) => response?.data?.name);
-      setLastName((prev) => response?.data?.lastname);
-      setOldEmail((prev) => response?.data?.email);
+      setName(response?.data?.name);
+      setLastName(response?.data?.lastname);
+      setOldEmail(response?.data?.email);
     }
     getAdm();
     setTimeout(() => {
@@ -57,9 +57,9 @@ export default function TeacherProfile() {
       };
       const response = await updateTeacher(body);
       setMsg(response?.msg ? response?.msg : response?.error);
-      setOlpassword((prev) => "");
-      setEmail((prev) => "");
-      setPassword((prev) => "");
+      setOlpassword("");
+      setEmail("");
+      setPassword("");
       setTimeout(() => {
         setMsg("")
         setReload(prev => !prev)
@@ -88,7 +88,7 @@ export default function TeacherProfile() {
                     value={name}
                     required
                     onChange={(e) => {
-                      setName((prev) => e.target.value);
+                      setName(e.target.value);
                     }}
                   />
                 </span>
@@ -100,7 +100,7 @@ export default function TeacherProfile() {
                     placeholder="Entre com seu sobrenome"
                     required
                     onChange={(e) => {
-                      setLastName((prev) => e.target.value);
+                      setLastName(e.target.value);
                     }}
                   />
                 </span>
@@ -113,7 +113,7 @@ export default function TeacherProfile() {
                     type="email"
                     required
                     onChange={(e) => {
-                      setOldEmail((prev) => e.target.value);
+                      setOldEmail(e.target.value);
                     }}
                   />
                 </span>
@@ -126,7 +126,7 @@ export default function TeacherProfile() {
                     value={oldpassword}
                     required
                     onChange={(e) => {
-                      setOlpassword((prev) => e.target.value);
+                      setOlpassword(e.target.value);
                     }}
                   />
                 </span>
@@ -137,7 +137,7 @@ export default function TeacherProfile() {
                     placeholder="Entre com seu email (opcional)"
                     type="email"
                     onChange={(e) => {
-                      setEmail((prev) => e.target.value);
+                      setEmail(e.target.value);
                     }}
                   />
                 </span>
@@ -148,7 +148,7 @@ export default function TeacherProfile() {
                     placeholder="Entre com nova senha"
                     type="password"
                     onChange={(e) => {
-                      setPassword((prev) => e.target.value);
+                      setPassword(e.target.value);
                     }}
                   />
                 </span>
