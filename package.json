@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "install" : "npm install --force",
+    "install": "npm install --force && npm tsc -b && vite build",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
