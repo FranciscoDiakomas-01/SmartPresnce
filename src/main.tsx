@@ -1,5 +1,5 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom";
 import './index.css'
 import 'react-toastify/ReactToastify.css'
 import App from './App.tsx'
@@ -107,9 +107,9 @@ const routes = createBrowserRouter([
     ],
   },
 ]);
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <RouterProvider router={routes}>
-    </RouterProvider>
-  </StrictMode>
+ReactDOM.render(
+  <React.StrictMode>
+    <RouterProvider router={routes} />
+  </React.StrictMode>,
+  document.getElementById("root")
 );
